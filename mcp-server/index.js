@@ -2,15 +2,14 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const OpenAI = require("openai");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Initialize Gemini API
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 app.post("/generate", async (req, res) => {
   const { prompt } = req.body;
@@ -18,18 +17,19 @@ app.post("/generate", async (req, res) => {
   if (!prompt) return res.status(400).json({ error: "Prompt is required" });
 
   try {
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [
-        { role: "user", content: `Write a React component: ${prompt}` },
-      ],
-    });
+    // ✅ Correct model path: "models/gemini-pro"
+    const model = genAI.getGenerativeModel({ model: "models/gemini-pro" });
 
-    const code = response.choices[0].message.content;
+    const result = await model.generateContent(
+      `Write a React component: ${prompt}`
+    );
+    const response = await result.response;
+    const code = response.text();
+
     res.json({ code });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Failed to generate code" });
+    res.status(500).json({ error: "Failed to generate code using Gemini" });
   }
 });
 
