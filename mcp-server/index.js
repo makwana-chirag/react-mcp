@@ -18,7 +18,11 @@ app.post("/generate", async (req, res) => {
 
   try {
     // ✅ Correct model path: "models/gemini-pro"
-    const model = genAI.getGenerativeModel({ model: "models/gemini-pro" });
+    // const model = genAI.getGenerativeModel({ model: "models/gemini-pro" });
+    const models = await genAI.listModels();
+    const model = genAI.getGenerativeModel({ model: "models/available-model" });
+
+    console.log("🚀 ~ app.post ~ model:", model);
 
     const result = await model.generateContent(
       `Write a React component: ${prompt}`
