@@ -9,66 +9,10 @@
     },
     {
         "id": "2",
-        "name": "d",
-        "price": 3,
-        "description": "g",
-        "category": "g",
-        "stock": 3
-    },
-    {
-        "id": "3",
-        "name": "d",
-        "price": 3,
-        "description": "g",
-        "category": "g",
-        "stock": 3
-    },
-    {
-        "id": "4",
-        "name": "d",
-        "price": 3,
-        "description": "g",
-        "category": "g",
-        "stock": 3
-    },
-    {
-        "id": "5",
-        "name": "d",
-        "price": 3,
-        "description": "g",
-        "category": "g",
-        "stock": 3
-    },
-    {
-        "id": "6",
-        "name": "d",
-        "price": 3,
-        "description": "g",
-        "category": "g",
-        "stock": 3
-    },
-    {
-        "id": "7",
-        "name": "d",
-        "price": 3,
-        "description": "g",
-        "category": "g",
-        "stock": 3
-    },
-    {
-        "id": "8",
-        "name": "d",
-        "price": 3,
-        "description": "g",
-        "category": "g",
-        "stock": 3
-    },
-    {
-        "id": "9",
-        "name": "d",
-        "price": 3,
-        "description": "g",
-        "category": "g",
-        "stock": 3
+        "name": "Random Widget",
+        "price": 42,
+        "description": "A randomly generated widget for testing purposes.",
+        "category": "Gadgets",
+        "stock": 17
     }
 ]
